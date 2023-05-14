@@ -1,0 +1,37 @@
+{
+ "user":[
+        {
+            "name":"Adam",
+            "address":"London",
+            "email":"abc@gmail.com",
+            "contact":"8346738",
+            "id":1
+        },
+        {
+            "name":"Adam",
+            "address":"Dubai",
+            "email":"abc@gmail.com",
+            "contact":"8346738",
+            "id":2
+        },     {
+            "name":"Adam",
+            "address":"London",
+            "email":"abc@gmail.com",
+            "contact":"8346738",
+            "id":3
+        },
+        {
+            "name":"Adam",
+            "address":"new york",
+            "email":"abc@gmail.com",
+            "contact":"8346738",
+            "id":4
+        },     {
+            "name":"Adam",
+            "address":"London",
+            "email":"abc@gmail.com",
+            "contact":"8346738",
+            "id":5
+        }
+ ] 
+}
