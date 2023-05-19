@@ -5,3 +5,6 @@ for _ in range(int(input())):
     for i in s1:
         m=s.count(i)
     print(m)
+
+
+    jkjkjkj
