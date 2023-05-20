@@ -6,5 +6,4 @@ for _ in range(int(input())):
         m=s.count(i)
     print(m)
 
-
-    jkjkjkj
+qwww
