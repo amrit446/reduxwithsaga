@@ -1,37 +1,32 @@
 {
-    "user":[
-           {
-               "name":"Adam",
-               "address":"London",
-               "email":"abc@gmail.com",
-               "contact":"8346738",
-               "id":1
-           },
-           {
-               "name":"Adam",
-               "address":"Dubai",
-               "email":"abc@gmail.com",
-               "contact":"8346738",
-               "id":2
-           },     {
-               "name":"Adam",
-               "address":"London",
-               "email":"abc@gmail.com",
-               "contact":"8346738",
-               "id":3
-           },
-           {
-               "name":"Adam",
-               "address":"new york",
-               "email":"abc@gmail.com",
-               "contact":"8346738",
-               "id":4
-           },     {
-               "name":"Adam",
-               "address":"London",
-               "email":"abc@gmail.com",
-               "contact":"8346738",
-               "id":5
-           }
-    ] 
-   }
+  "user": [
+    {
+      "name": "Amrit",
+      "mobile": "12311",
+      "email": "jhk1@gmail.com",
+      "address": "jkjkjkjkjkjk1",
+      "id": 8
+    },
+    {
+      "name": "Amrit",
+      "mobile": "12313",
+      "email": "jhk@gmail.com",
+      "address": "dajks",
+      "id": 9
+    },
+    {
+      "name": "test",
+      "mobile": "312321",
+      "email": "jhk@gmail.com",
+      "address": "fl",
+      "id": 10
+    },
+    {
+      "name": "test6",
+      "mobile": "676876",
+      "email": "jkk@gmail.com",
+      "address": "jkjkjkjkjkjk",
+      "id": 11
+    }
+  ]
+}

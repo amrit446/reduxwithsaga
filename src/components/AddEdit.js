@@ -4,29 +4,37 @@ import { useParams, useHistory } from "react-router-dom";
 import { isEmpty } from "lodash";
 import {useSelector, useDispatch} from "react-redux"
 import {addContactsStart, editContactsStart} from "../redux/actions"
+// import {  toast } from 'react-toastify';
+
+
+
+const initialState = {
+  name: "",
+  mobile: "",
+  email: "",
+  address: "",
+};
 
 const AddEdit = () => {
-  const values = {
-    fullName: "",
-    mobile: "",
-    email: "",
-    address: "",
-  };
-  const [initialState, setState] = useState(values);
+ 
+  const [formValue, setFormValue] = useState(initialState);
+  const [editMode, setEditMode] = useState(false);
+  const { name, mobile, email, address } = formValue;
+  const dispatch = useDispatch();
+  const {id} = useParams();
   // const [data, setData] = useState({});
 
-  const {contacts:data}=useSelector(state=>state.data)
+  const {users}=useSelector(state=>state.data)
 
   //   console.log("currentId", currentId);
 
-  const dispatch = useDispatch();
+  
 
-  const { fullName, mobile, email, address } = initialState;
+  
 
   const currentId = useParams();
   const history = useHistory();
 
-  const { id } = currentId;
 
   console.log("currentId", currentId);
 
@@ -45,35 +53,47 @@ const AddEdit = () => {
 
 
   useEffect(() => {
-    if (isEmpty(id)) {
-      console.log("initialState", initialState);
-      setState({ ...values });
-    } else {
-      setState({ ...data[id] });
-    }
-  }, [id, data]);
+   if(id){
+    setEditMode(true)
+    const singleUser=users.find((item)=>item.id===Number(id));
+    setFormValue({...singleUser});
+   }else{
+    setEditMode(false);
+    setFormValue({...initialState})
+   }
+  },[id]);
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
-    setState({
-      ...initialState,
-      [name]: value,
-    });
+    setFormValue({ ...formValue, [name]: value});
   };
 
-  const handleSubmit = (e, obj) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("initialState", initialState);
-    if (isEmpty(id)) {
-       dispatch(addContactsStart(initialState))
-    } else {
-       dispatch(editContactsStart({initialState, id}))
+    if(name && email && mobile && address){
+    if(!editMode){
+     
+        dispatch(addContactsStart(formValue));
+        // toast.success("user Added")
+        setTimeout(()=>{
+          history.push("/");
+        },500)
+      }
+      else{
+        dispatch(editContactsStart({id, formValue}))
+        setEditMode(false)
+        setTimeout(()=>{
+          history.push("/");
+        },500)
+      }
+      
     }
-    history.push("/");
+   
   };
 
   return (
     <div className="container mt-5">
+      <h2>{!editMode?"Add user":"Update User"}</h2>
       <div className="row">
         <div className="col-md-6">
           <form onSubmit={handleSubmit}>
@@ -82,8 +102,8 @@ const AddEdit = () => {
               <input
                 type="text"
                 className="form-control"
-                name="fullName"
-                value={fullName}
+                name="name"
+                value={name || ""}
                 onChange={handleInputChange}
               />
             </div>
@@ -93,7 +113,7 @@ const AddEdit = () => {
                 type="number"
                 className="form-control"
                 name="mobile"
-                value={mobile}
+                value={mobile || ""}
                 onChange={handleInputChange}
               />
             </div>
@@ -103,7 +123,7 @@ const AddEdit = () => {
                 type="email"
                 className="form-control"
                 name="email"
-                value={email}
+                value={email || ""}
                 onChange={handleInputChange}
               />
             </div>
@@ -113,13 +133,13 @@ const AddEdit = () => {
                 type="text"
                 className="form-control"
                 name="address"
-                value={address}
+                value={address || ""}
                 onChange={handleInputChange}
               />
             </div>
             <button className="btn btn-default">Cancel</button>
             <button type="submit" className="btn btn-success btn-raised">
-              Submit
+            {!editMode?"Add":"Update"}
             </button>
           </form>
         </div>

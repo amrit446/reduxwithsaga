@@ -1,10 +1,12 @@
 import * as types from "./actionTypes";
 
 const initialState={
-    contacts:{},
+    users:[],
     error:null,
     loading:false
 }
+
+
 
 
 const contactReducer=(state=initialState, action)=>{
@@ -21,11 +23,18 @@ const contactReducer=(state=initialState, action)=>{
         case types.GET_CONTACTS_SUCCESS:
                 return{
                    ...state,
-                   contacts:action.payload,
+                   users:action.payload,
                    loading:false
                 }
         
         case types.DELETE_CONTACT_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                users:state.users.filter((item)=>item.id!==action.payload)
+            }
+
+        
         case types.ADD_CONTACT_SUCCESS:
         case types.EDIT_CONTACT_SUCCESS:
             return{
@@ -50,3 +59,5 @@ const contactReducer=(state=initialState, action)=>{
 }
 
 export default contactReducer;
+
+

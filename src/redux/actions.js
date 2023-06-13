@@ -4,9 +4,10 @@ export const getContactsStart=()=>({
     type:types.GET_CONTACTS_START
 })
 
-export const getContactsSuccess=(contacts)=>({
+export const getContactsSuccess=(users)=>({
     type:types.GET_CONTACTS_SUCCESS,
-    payload:contacts
+    payload:users,
+    
 })
 
 export const getContactsFail=(error)=>({
@@ -17,11 +18,15 @@ export const getContactsFail=(error)=>({
 
 export const deleteContactsStart=(id)=>({
     type:types.DELETE_CONTACT_START,
-    payload:id
+    payload:id,
+
+
 })
 
-export const deleteContactsSuccess=()=>({
+export const deleteContactsSuccess=(id)=>({
     type:types.DELETE_CONTACT_SUCCESS,
+    payload:id
+
 })
 
 export const deleteContactsFail=(error)=>({
@@ -30,9 +35,9 @@ export const deleteContactsFail=(error)=>({
 })
 
 
-export const addContactsStart=(contact)=>({
+export const addContactsStart=(user)=>({
     type:types.ADD_CONTACT_START,
-    payload:contact
+    payload:user
 })
 
 export const addContactsSuccess=()=>({
@@ -45,9 +50,9 @@ export const addContactsFail=(error)=>({
 })
 
 
-export const editContactsStart=(contactDetail)=>({
+export const editContactsStart=(userInfo)=>({
     type:types.EDIT_CONTACT_START,
-    payload:contactDetail
+    payload:userInfo
 })
 
 export const editContactsSuccess=()=>({

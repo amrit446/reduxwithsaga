@@ -6,10 +6,12 @@ import Error from "./components/Error";
 import Header from "./components/Header";
 import View from "./components/View";
 import About from "./components/About";
+// import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   return (
     <div className="App">
+      {/* <ToastContainer/> */}
       <Header />
         <Switch>
           <Route exact path="/" component={ListRecord} />
